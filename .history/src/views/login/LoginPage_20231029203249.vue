@@ -39,9 +39,7 @@ const registerFn = async () => {
   await form.value.validate()
   await userRegisterService(formModel.value)
   ElMessage.success('注册成功')
-  //跳转到登录
   isRegister.value = false
-  //重置表单
   form.value.resetFields()
 }
 </script>
