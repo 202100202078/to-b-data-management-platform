@@ -2,12 +2,13 @@
 import { useRoute, useRouter } from 'vue-router'
 import { useUserStore } from '@/stores'
 import request from '@/utils/request.js'
-import { ElMessage } from 'element-plus'
 const userStore = useUserStore()
 
 const route = useRoute()
 const router = useRouter()
 
+import { ElMessage } from 'element-plus'
+ElMessage.error('Oops, this is a error message.')
 const goList = async () => {
   const res = await request.get('/my/cate/info')
   console.log(res)
@@ -28,9 +29,6 @@ const goList = async () => {
     {{ userStore.token }}
     <el-button @click="userStore.setToken('kasldjkalsjdlkasj')">登录</el-button>
     <el-button @click="userStore.removeToken()">退出</el-button>
-    <el-button @click="ElMessage.error('Oops, this is a error message.')"
-      >显示错误信息</el-button
-    >
   </div>
 </template>
 
