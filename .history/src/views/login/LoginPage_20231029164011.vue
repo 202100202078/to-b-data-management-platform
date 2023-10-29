@@ -1,8 +1,4 @@
-<script setup>
-import { User, Lock } from '@element-plus/icons-vue'
-import { ref } from 'vue'
-const isRegister = ref(true)
-</script>
+<script setup></script>
 
 <template>
   <el-row class="login-page">
@@ -78,7 +74,7 @@ const isRegister = ref(true)
 
 <style lang="scss" scoped>
 .login-page {
-  height: 100vh;
+  // height: 100vh;
   background-color: #fff;
   .bg {
     background:

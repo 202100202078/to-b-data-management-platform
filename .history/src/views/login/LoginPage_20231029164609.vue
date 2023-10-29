@@ -87,7 +87,7 @@ const isRegister = ref(true)
     border-radius: 0 20px 20px 0;
   }
   .form {
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: center;
     user-select: none;

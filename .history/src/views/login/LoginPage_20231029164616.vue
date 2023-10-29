@@ -87,10 +87,10 @@ const isRegister = ref(true)
     border-radius: 0 20px 20px 0;
   }
   .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    user-select: none;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // user-select: none;
     .title {
       margin: 0 auto;
     }

@@ -1,9 +1,3 @@
-<script setup>
-import { User, Lock } from '@element-plus/icons-vue'
-import { ref } from 'vue'
-const isRegister = ref(true)
-</script>
-
 <template>
   <el-row class="login-page">
     <el-col :span="12" class="bg"></el-col>
@@ -75,33 +69,3 @@ const isRegister = ref(true)
     </el-col>
   </el-row>
 </template>
-
-<style lang="scss" scoped>
-.login-page {
-  height: 100vh;
-  background-color: #fff;
-  .bg {
-    background:
-      url('@/assets/logo2.png') no-repeat 60% center / 240px auto,
-      url('@/assets/login_bg.jpg') no-repeat center / cover;
-    border-radius: 0 20px 20px 0;
-  }
-  .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    user-select: none;
-    .title {
-      margin: 0 auto;
-    }
-    .button {
-      width: 100%;
-    }
-    .flex {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-}
-</style>

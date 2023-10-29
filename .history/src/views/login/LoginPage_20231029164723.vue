@@ -90,7 +90,7 @@ const isRegister = ref(true)
     display: flex;
     flex-direction: column;
     justify-content: center;
-    user-select: none;
+    // user-select: none;
     .title {
       margin: 0 auto;
     }

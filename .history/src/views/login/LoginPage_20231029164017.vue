@@ -1,8 +1,4 @@
-<script setup>
-import { User, Lock } from '@element-plus/icons-vue'
-import { ref } from 'vue'
-const isRegister = ref(true)
-</script>
+<script setup></script>
 
 <template>
   <el-row class="login-page">

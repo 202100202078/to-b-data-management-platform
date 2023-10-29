@@ -98,7 +98,7 @@ const isRegister = ref(true)
       width: 100%;
     }
     .flex {
-      width: 100%;
+      // width: 100%;
       display: flex;
       justify-content: space-between;
     }
