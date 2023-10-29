@@ -2,7 +2,7 @@
 import { userRegisterService } from '@/api/user'
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref } from 'vue'
-const isRegister = ref(false)
+const isRegister = ref(true)
 
 const formModel = ref({
   username: '',

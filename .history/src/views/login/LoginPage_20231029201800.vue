@@ -1,8 +1,7 @@
 <script setup>
-import { userRegisterService } from '@/api/user'
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref } from 'vue'
-const isRegister = ref(false)
+const isRegister = ref(true)
 
 const formModel = ref({
   username: '',
@@ -35,11 +34,9 @@ const rules = {
 }
 
 const form = ref()
-const registerFn = async () => {
-  await form.value.validate()
-  await userRegisterService(formModel.value)
-  ElMessage.success('注册成功')
-  isRegister.value = false
+const registerFn = () => {
+  form.value.validate()
+  console.log('请求')
 }
 </script>
 
