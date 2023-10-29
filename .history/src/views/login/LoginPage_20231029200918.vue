@@ -21,14 +21,7 @@ const rules = {
   repassword: [
     { required: true, message: '请再次输入密码', trigger: 'blur' },
     {
-      validator: (rule, value, callback) => {
-        if (value != formModel.value.password) {
-          callback(new Error('两次密码不一致'))
-        } else {
-          callback()
-        }
-      },
-      trigger: 'blur'
+      validator: (rule, value, callback) => {}
     }
   ]
 }
@@ -64,9 +57,8 @@ const rules = {
             placeholder="请输入密码"
           ></el-input>
         </el-form-item>
-        <el-form-item prop="repassword">
+        <el-form-item>
           <el-input
-            v-model="formModel.repassword"
             :prefix-icon="Lock"
             type="password"
             placeholder="请输入再次密码"

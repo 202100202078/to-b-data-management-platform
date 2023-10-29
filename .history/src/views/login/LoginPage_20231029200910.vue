@@ -18,19 +18,9 @@ const rules = {
     { required: true, message: '请输入密码', trigger: 'blur' },
     { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' }
   ],
-  repassword: [
-    { required: true, message: '请再次输入密码', trigger: 'blur' },
-    {
-      validator: (rule, value, callback) => {
-        if (value != formModel.value.password) {
-          callback(new Error('两次密码不一致'))
-        } else {
-          callback()
-        }
-      },
-      trigger: 'blur'
-    }
-  ]
+  repassword: [{ required: true, message: '请再次输入密码', trigger: 'blur' },{
+    validator:(rule,value,)
+  }]
 }
 </script>
 
@@ -64,9 +54,8 @@ const rules = {
             placeholder="请输入密码"
           ></el-input>
         </el-form-item>
-        <el-form-item prop="repassword">
+        <el-form-item>
           <el-input
-            v-model="formModel.repassword"
             :prefix-icon="Lock"
             type="password"
             placeholder="请输入再次密码"

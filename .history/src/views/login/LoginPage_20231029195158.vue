@@ -12,24 +12,12 @@ const formModel = ref({
 const rules = {
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
-    { min: 5, max: 10, message: '用户名长度必须为5-10位', trigger: 'blur' }
+    { min: 5, max: 10, message: '用户名长度必须为6-10位', trigger: 'blur' }
   ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
-    { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' }
-  ],
-  repassword: [
-    { required: true, message: '请再次输入密码', trigger: 'blur' },
-    {
-      validator: (rule, value, callback) => {
-        if (value != formModel.value.password) {
-          callback(new Error('两次密码不一致'))
-        } else {
-          callback()
-        }
-      },
-      trigger: 'blur'
-    }
+    { min: 6, max: 15, message: '密码长度为6-15位', trigger: 'blur' },
+    { pattern: /^\S{6,15}$/,message:'密码' }
   ]
 }
 </script>
@@ -40,7 +28,6 @@ const rules = {
     <el-col :span="6" :offset="3" class="form">
       <el-form
         :model="formModel"
-        :rules="rules"
         ref="form"
         size="large"
         autocomplete="off"
@@ -49,24 +36,18 @@ const rules = {
         <el-form-item>
           <h1>注册</h1>
         </el-form-item>
-        <el-form-item prop="username">
-          <el-input
-            v-model="formModel.username"
-            :prefix-icon="User"
-            placeholder="请输入用户名"
-          ></el-input>
+        <el-form-item>
+          <el-input :prefix-icon="User" placeholder="请输入用户名"></el-input>
         </el-form-item>
-        <el-form-item prop="password">
+        <el-form-item>
           <el-input
-            v-model="formModel.password"
             :prefix-icon="Lock"
             type="password"
             placeholder="请输入密码"
           ></el-input>
         </el-form-item>
-        <el-form-item prop="repassword">
+        <el-form-item>
           <el-input
-            v-model="formModel.repassword"
             :prefix-icon="Lock"
             type="password"
             placeholder="请输入再次密码"
