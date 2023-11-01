@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { useUserStore } from '@/stores'
+import {}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,12 +39,10 @@ const router = createRouter({
 })
 
 // 配置导航守卫
-router.beforeEach((to) => {
-  const userStore = useUserStore()
-  //如果当前没有登录(即没有token)并且去往页面不是登录页
-  if (!userStore.token && to.path !== '/login') {
-    return '/login'
-  }
+router.beforeEach((to, from) => {
+  // ...
+  // 返回 false 以取消导航
+  return false
 })
 
 export default router

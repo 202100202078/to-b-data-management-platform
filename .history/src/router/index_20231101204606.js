@@ -39,11 +39,10 @@ const router = createRouter({
 })
 
 // 配置导航守卫
-router.beforeEach((to) => {
+router.beforeEach((to, from) => {
   const userStore = useUserStore()
-  //如果当前没有登录(即没有token)并且去往页面不是登录页
-  if (!userStore.token && to.path !== '/login') {
-    return '/login'
+  if (!userStore.token && to.name !== 'login') {
+    return { name: 'login' }
   }
 })
 

@@ -42,7 +42,7 @@ const router = createRouter({
 router.beforeEach((to) => {
   const userStore = useUserStore()
   //如果当前没有登录(即没有token)并且去往页面不是登录页
-  if (!userStore.token && to.path !== '/login') {
+  if (!userStore.token && to.name !== 'login') {
     return '/login'
   }
 })
