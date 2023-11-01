@@ -1,12 +1,8 @@
 <script setup>
-import { userRegisterService, userLoginService } from '@/api/user'
+import { userRegisterService } from '@/api/user'
 import { User, Lock } from '@element-plus/icons-vue'
-import { ref, watch } from 'vue'
-import { useUserStore } from '@/stores'
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
 const isRegister = ref(false)
-const userStore = useUserStore()
-const router = useRouter()
 
 const formModel = ref({
   username: '',
@@ -40,29 +36,13 @@ const rules = {
 
 const form = ref()
 const registerFn = async () => {
-  // 使用await是为了表单预验证失败时不再继续执行下面代码
   await form.value.validate()
   await userRegisterService(formModel.value)
   ElMessage.success('注册成功')
   //跳转到登录
   isRegister.value = false
-}
-
-watch(isRegister, () => {
-  // 当切换为登录/注册时重置表单
-  form.value.resetFields()
-})
-
-const login = async () => {
-  // 使用await是为了表单预验证失败时不再继续执行下面代码
-  await form.value.validate()
-  //登录
-  const res = await userLoginService(formModel.value)
-  ElMessage.success('登录成功')
-  //存储用户token
-  userStore.setToken(res.data.token)
-  //跳转到首页
-  router.push('/')
+  //重置表单
+  // form.value.resetFields()
 }
 </script>
 
@@ -154,11 +134,7 @@ const login = async () => {
           </div>
         </el-form-item>
         <el-form-item>
-          <el-button
-            class="button"
-            type="primary"
-            auto-insert-space
-            @click="login"
+          <el-button class="button" type="primary" auto-insert-space
             >登录</el-button
           >
         </el-form-item>

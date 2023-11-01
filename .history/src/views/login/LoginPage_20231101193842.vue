@@ -2,11 +2,7 @@
 import { userRegisterService, userLoginService } from '@/api/user'
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref, watch } from 'vue'
-import { useUserStore } from '@/stores'
-import { useRouter } from 'vue-router'
 const isRegister = ref(false)
-const userStore = useUserStore()
-const router = useRouter()
 
 const formModel = ref({
   username: '',
@@ -55,14 +51,9 @@ watch(isRegister, () => {
 
 const login = async () => {
   // 使用await是为了表单预验证失败时不再继续执行下面代码
-  await form.value.validate()
+  await form.value.validate(formModel.value)
   //登录
-  const res = await userLoginService(formModel.value)
-  ElMessage.success('登录成功')
-  //存储用户token
-  userStore.setToken(res.data.token)
-  //跳转到首页
-  router.push('/')
+  await userLoginService()
 }
 </script>
 

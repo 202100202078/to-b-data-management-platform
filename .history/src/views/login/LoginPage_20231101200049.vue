@@ -3,10 +3,7 @@ import { userRegisterService, userLoginService } from '@/api/user'
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref, watch } from 'vue'
 import { useUserStore } from '@/stores'
-import { useRouter } from 'vue-router'
 const isRegister = ref(false)
-const userStore = useUserStore()
-const router = useRouter()
 
 const formModel = ref({
   username: '',
@@ -60,9 +57,8 @@ const login = async () => {
   const res = await userLoginService(formModel.value)
   ElMessage.success('登录成功')
   //存储用户token
-  userStore.setToken(res.data.token)
-  //跳转到首页
-  router.push('/')
+  // console.log(res.data.token)
+  useUserStore.setToken(res.data.token)
 }
 </script>
 

@@ -60,9 +60,8 @@ const login = async () => {
   const res = await userLoginService(formModel.value)
   ElMessage.success('登录成功')
   //存储用户token
+  // console.log(res.data.token)
   userStore.setToken(res.data.token)
-  //跳转到首页
-  router.push('/')
 }
 </script>
 
