@@ -16,12 +16,12 @@ const router = useRouter()
 const userStore = useUserStore()
 userStore.getUserInfo()
 
-const handleCommand = async (key) => {
+const handleCommand = (key) => {
   if (key === 'logout') {
     //确认提示
-    await ElMessageBox.confirm('你确认要退出登录吗?', '温馨提示', {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
+    ElMessageBox.confirm('你确认要退出登录吗?', '温馨提示', {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
       type: 'warning'
     })
     //清空本地用户数据并跳转到登录页

@@ -16,10 +16,10 @@ const router = useRouter()
 const userStore = useUserStore()
 userStore.getUserInfo()
 
-const handleCommand = async (key) => {
+const handleCommand = (key) => {
   if (key === 'logout') {
     //确认提示
-    await ElMessageBox.confirm('你确认要退出登录吗?', '温馨提示', {
+    ElMessageBox.confirm('你确认要退出登录吗?', '温馨提示', {
       confirmButtonText: '确认',
       cancelButtonText: '取消',
       type: 'warning'
