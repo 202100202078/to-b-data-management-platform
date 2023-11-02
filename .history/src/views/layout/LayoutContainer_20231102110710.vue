@@ -56,14 +56,10 @@ userStore.getUserInfo()
     </el-aside>
     <el-container>
       <el-header>
-        <div>
-          程序员：<strong>{{
-            userStore.userInfo.nickname || userStore.userInfo.username
-          }}</strong>
-        </div>
+        <div>黑马程序员：<strong>小帅鹏</strong></div>
         <el-dropdown placement="bottom-end">
           <span class="el-dropdown__box">
-            <el-avatar :src="userStore.userInfo.user_pic || avatar" />
+            <el-avatar :src="avatar" />
             <el-icon><CaretBottom /></el-icon>
           </span>
           <template #dropdown>
@@ -88,10 +84,7 @@ userStore.getUserInfo()
         <router-view></router-view>
       </el-main>
       <el-footer
-        >大事件 ©2023 Created by
-        {{
-          userStore.userInfo.nickname || userStore.userInfo.username
-        }}</el-footer
+        >大事件 ©2023 Created by {{{userStore.userInfo.nickname}}}</el-footer
       >
     </el-container>
   </el-container>

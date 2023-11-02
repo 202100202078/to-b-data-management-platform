@@ -22,9 +22,7 @@ export const useUserStore = defineStore(
     return {
       token,
       setToken,
-      removeToken,
-      userInfo,
-      getUserInfo
+      removeToken
     }
   },
   {

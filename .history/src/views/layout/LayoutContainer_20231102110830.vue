@@ -63,7 +63,7 @@ userStore.getUserInfo()
         </div>
         <el-dropdown placement="bottom-end">
           <span class="el-dropdown__box">
-            <el-avatar :src="userStore.userInfo.user_pic || avatar" />
+            <el-avatar :src="avatar" />
             <el-icon><CaretBottom /></el-icon>
           </span>
           <template #dropdown>
