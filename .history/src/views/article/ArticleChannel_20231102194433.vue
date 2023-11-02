@@ -13,15 +13,15 @@ const getArticleList = async () => {
 }
 getArticleList()
 
-const dialog = ref()
-const handleEdit = (row) => {
-  dialog.value.open(row)
+const dialogVisible = ref(false)
+const handleEdit = ($index, row) => {
+  console.log($index, row)
 }
 const handleDelete = ($index, row) => {
   console.log($index, row)
 }
 const onAddChannel = () => {
-  dialog.value.open({})
+  dialogVisible.value = true
 }
 </script>
 
@@ -58,7 +58,7 @@ const onAddChannel = () => {
         <el-empty description="没有数据" />
       </template>
     </el-table>
-    <ChannelEdit ref="dialog"></ChannelEdit>
+    <ChannelEdit></ChannelEdit>
   </PageContainer>
 </template>
 

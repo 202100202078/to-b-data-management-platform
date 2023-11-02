@@ -14,14 +14,15 @@ const getArticleList = async () => {
 getArticleList()
 
 const dialog = ref()
-const handleEdit = (row) => {
-  dialog.value.open(row)
+const dialogVisible = ref(false)
+const handleEdit = ($index, row) => {
+  console.log($index, row)
 }
 const handleDelete = ($index, row) => {
   console.log($index, row)
 }
 const onAddChannel = () => {
-  dialog.value.open({})
+  dialog.value.open()
 }
 </script>
 
