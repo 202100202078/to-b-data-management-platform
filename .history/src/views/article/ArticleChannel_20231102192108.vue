@@ -5,10 +5,10 @@ import { articleGetChannelsService } from '@/api/article'
 const articleList = ref([])
 const isLoading = ref(false)
 const getArticleList = async () => {
-  isLoading.value = true
+  isLoading.value = false
   const res = await articleGetChannelsService()
   articleList.value = res.data.data
-  isLoading.value = false
+  isLoading.value = true
 }
 getArticleList()
 
@@ -49,9 +49,6 @@ const handleDelete = ($index, row) => {
           ></el-button>
         </template>
       </el-table-column>
-      <template #empty>
-        <el-empty description="没有数据" />
-      </template>
     </el-table>
   </PageContainer>
 </template>

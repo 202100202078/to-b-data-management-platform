@@ -49,8 +49,8 @@ const handleDelete = ($index, row) => {
           ></el-button>
         </template>
       </el-table-column>
-      <template #empty>
-        <el-empty description="没有数据" />
+      <template>
+        <el-empty description="description" />
       </template>
     </el-table>
   </PageContainer>

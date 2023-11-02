@@ -8,6 +8,7 @@ const getArticleList = async () => {
   isLoading.value = true
   const res = await articleGetChannelsService()
   articleList.value = res.data.data
+  articleList.value = []
   isLoading.value = false
 }
 getArticleList()
