@@ -7,7 +7,7 @@ import { articleGetArticleListService } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
 //编辑文章
 const handleEdit = (row) => {
-  ArticleEditRef.value.open(row)
+  console.log(row)
 }
 //删除文章
 const handleDelete = (row) => {

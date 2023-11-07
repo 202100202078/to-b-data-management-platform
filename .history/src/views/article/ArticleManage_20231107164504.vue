@@ -2,22 +2,15 @@
 import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import EditSelect from './components/EditSelect.vue'
-import ArticleEdit from './components/ArticleEdit.vue'
 import { articleGetArticleListService } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
 //编辑文章
 const handleEdit = (row) => {
-  ArticleEditRef.value.open(row)
+  console.log(row)
 }
 //删除文章
 const handleDelete = (row) => {
   console.log(row)
-}
-
-const ArticleEditRef = ref()
-//新增文章
-const onPublishArticle = () => {
-  ArticleEditRef.value.open({})
 }
 
 //请求参数的存储
@@ -38,12 +31,15 @@ const getArticleList = async () => {
 }
 //文章表格数据的获取
 getArticleList()
+
+//发布文章
+const visibleDrawer = ref(true)
 </script>
 
 <template>
   <PageContainer title="文章管理">
     <template #extra>
-      <el-button type="primary" @click="onPublishArticle">发布文章</el-button>
+      <el-button type="primary">发布文章</el-button>
     </template>
     <!-- 筛选表单 -->
     <el-form :inline="true">
@@ -101,6 +97,8 @@ getArticleList()
       </el-table-column>
     </el-table>
     <!-- 抽屉 -->
-    <ArticleEdit ref="ArticleEditRef"></ArticleEdit>
+    <el-drawer v-model="visibleDrawer" title="I am the title">
+      <span>Hi, there!</span>
+    </el-drawer>
   </PageContainer>
 </template>
