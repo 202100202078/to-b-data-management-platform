@@ -38,25 +38,15 @@ const open = (obj) => {
 }
 
 const formRef = ref()
-const emit = defineEmits(['success'])
-
 const onSubmit = async () => {
   //先对表单进行提交前的校验
   await formRef.value.validate()
   // 提交
   if (formModel.value.id) {
     //编辑
-    await articleEditChannelService(formModel.value)
   } else {
     //添加
-    await articleAddChannelService(formModel.value)
   }
-  // 提示用户操作成功
-  ElMessage.success('操作成功')
-  //退出弹层
-  dialogVisible.value = false
-  //父组件重新渲染
-  emit('success')
 }
 
 defineExpose({

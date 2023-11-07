@@ -79,4 +79,17 @@ const handleSuccess = () => {
   </PageContainer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/*鼠标点击后移开，恢复本身样式*/
+.buttonDiv, .buttonDiv:focus:not(.buttonDiv:hover){
+    margin-right: 12px;
+    border: 1px solid #2794f8;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 #f4f4f4;
+    color: #2794f8;
+    background: white;
+}
+————————————————
+版权声明：本文为CSDN博主「27号白开水」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/kangrushuai/article/details/114686368
+</style>

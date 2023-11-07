@@ -1,10 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
-import {
-  articleGetChannelsService,
-  articleDeleteChannelService
-} from '@/api/article'
+import { articleGetChannelsService } from '@/api/article'
 import ChannelEdit from './components/ChannelEdit.vue'
 const articleList = ref([])
 const isLoading = ref(false)
@@ -20,19 +17,12 @@ const dialog = ref()
 const handleEdit = (row) => {
   dialog.value.open(row)
 }
-const handleDelete = async (row) => {
-  await ElMessageBox.confirm(
-    `你确定要删除该分类(${row.cate_name})吗?`,
-    '温馨提示',
-    {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
-      type: 'warning'
-    }
-  )
-  await articleDeleteChannelService(row.id)
-  ElMessage.success('操作成功')
-  getArticleList()
+const handleDelete = ($index, row) => {
+  ElMessageBox.confirm(`你确定要删除该分类(${row.})吗?`, '温馨提示', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
 }
 const onAddChannel = () => {
   dialog.value.open({})
@@ -52,7 +42,7 @@ const handleSuccess = () => {
       <el-table-column prop="cate_name" label="分类名称" />
       <el-table-column prop="cate_alias" label="分类别名" />
       <el-table-column label="操作" width="100">
-        <template #default="{ row }">
+        <template #default="{ row, $index }">
           <el-button
             plain
             :icon="Edit"
@@ -67,7 +57,7 @@ const handleSuccess = () => {
             circle
             type="danger"
             size="small"
-            @click="handleDelete(row)"
+            @click="handleDelete($index, row)"
           ></el-button>
         </template>
       </el-table-column>

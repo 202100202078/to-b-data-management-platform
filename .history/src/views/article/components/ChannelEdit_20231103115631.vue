@@ -37,28 +37,6 @@ const open = (obj) => {
   formModel.value = { ...obj }
 }
 
-const formRef = ref()
-const emit = defineEmits(['success'])
-
-const onSubmit = async () => {
-  //先对表单进行提交前的校验
-  await formRef.value.validate()
-  // 提交
-  if (formModel.value.id) {
-    //编辑
-    await articleEditChannelService(formModel.value)
-  } else {
-    //添加
-    await articleAddChannelService(formModel.value)
-  }
-  // 提示用户操作成功
-  ElMessage.success('操作成功')
-  //退出弹层
-  dialogVisible.value = false
-  //父组件重新渲染
-  emit('success')
-}
-
 defineExpose({
   open
 })
@@ -70,7 +48,6 @@ defineExpose({
     width="30%"
   >
     <el-form
-      ref="formRef"
       :model="formModel"
       :rules="rules"
       label-width="100px"
@@ -92,7 +69,9 @@ defineExpose({
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="onSubmit"> 确认 </el-button>
+        <el-button type="primary" @click="dialogVisible = false">
+          确认
+        </el-button>
       </span>
     </template>
   </el-dialog>

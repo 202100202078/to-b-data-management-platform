@@ -39,7 +39,13 @@ const open = (obj) => {
 
 const formRef = ref()
 const emit = defineEmits(['success'])
-
+const cancel = () => {
+  ElMessageBox.confirm('你确定要删除该分类吗?', '温馨提示', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    type: 'warning'
+  })
+}
 const onSubmit = async () => {
   //先对表单进行提交前的校验
   await formRef.value.validate()

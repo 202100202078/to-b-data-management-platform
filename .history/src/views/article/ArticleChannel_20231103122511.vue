@@ -79,4 +79,26 @@ const handleSuccess = () => {
   </PageContainer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/*鼠标点击后移开，恢复本身样式*/
+.el-button:focus:not(.buttonDiv:hover) {
+  border: 1px solid #2794f8;
+  box-shadow: 0 2px 4px 0 #f4f4f4;
+  color: #2794f8;
+  background: white;
+}
+/*鼠标悬浮，没有按下；鼠标按下后抬起，没有移开*/
+.buttonDiv:focus, .buttonDiv:hover{
+    background: #eaf5ff;
+    border: 1px solid #2794f8 !important;
+    color: #2794f8;
+}
+/*鼠标按下，没有抬起*/
+.buttonDiv:active {
+    background: #2794f8;
+    color: white;
+}
+————————————————
+版权声明：本文为CSDN博主「27号白开水」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/kangrushuai/article/details/114686368
+</style>

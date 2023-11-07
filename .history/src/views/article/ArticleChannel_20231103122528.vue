@@ -79,4 +79,24 @@ const handleSuccess = () => {
   </PageContainer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+/*鼠标点击后移开，恢复本身样式*/
+.el-button:focus:not(.buttonDiv:hover) {
+  border: 1px solid #2794f8;
+  box-shadow: 0 2px 4px 0 #f4f4f4;
+  color: #2794f8;
+  background: white;
+}
+/*鼠标悬浮，没有按下；鼠标按下后抬起，没有移开*/
+.el-button:focus,
+.el-button:hover {
+  background: #eaf5ff;
+  border: 1px solid #2794f8 !important;
+  color: #2794f8;
+}
+/*鼠标按下，没有抬起*/
+.buttonDiv:active {
+  background: #2794f8;
+  color: white;
+}
+</style>

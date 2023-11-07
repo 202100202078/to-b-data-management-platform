@@ -52,7 +52,7 @@ const handleSuccess = () => {
       <el-table-column prop="cate_name" label="分类名称" />
       <el-table-column prop="cate_alias" label="分类别名" />
       <el-table-column label="操作" width="100">
-        <template #default="{ row }">
+        <template #default="{ row, $index }">
           <el-button
             plain
             :icon="Edit"

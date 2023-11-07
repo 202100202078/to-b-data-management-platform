@@ -8,9 +8,6 @@ export const articleAddChannelService = (data) =>
 export const articleEditChannelService = (data) =>
   request.put('/my/cate/info', data)
 //删除文章分类
-export const articleDeleteChannelService = (id) =>
-  request.delete('/my/cate/del', {
-    params: {
-      id
-    }
+export const articleDeleteChannelService = (id) => request.delete('/my/cate/del',params: { // 请求参数拼接在url上
+  id: 参数
   })

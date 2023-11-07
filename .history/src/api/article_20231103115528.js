@@ -7,10 +7,3 @@ export const articleAddChannelService = (data) =>
 //编辑文章分类
 export const articleEditChannelService = (data) =>
   request.put('/my/cate/info', data)
-//删除文章分类
-export const articleDeleteChannelService = (id) =>
-  request.delete('/my/cate/del', {
-    params: {
-      id
-    }
-  })

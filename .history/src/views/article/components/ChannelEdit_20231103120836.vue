@@ -39,7 +39,18 @@ const open = (obj) => {
 
 const formRef = ref()
 const emit = defineEmits(['success'])
-
+const cancel = () => {
+  ElMessageBox.confirm(
+    'proxy will permanently delete the file. Continue?',
+    'Warning',
+    {
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel',
+      type: 'warning'
+    }
+  )
+  dialogVisible.value = false
+}
 const onSubmit = async () => {
   //先对表单进行提交前的校验
   await formRef.value.validate()
@@ -91,7 +102,7 @@ defineExpose({
     </el-form>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button @click="cancel">取消</el-button>
         <el-button type="primary" @click="onSubmit"> 确认 </el-button>
       </span>
     </template>
