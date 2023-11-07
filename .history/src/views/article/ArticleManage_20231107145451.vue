@@ -27,11 +27,11 @@ const handleDelete = (row) => {
   console.log(row)
 }
 
-//请求参数的存储
+//默认文章分类下拉菜单的选择
 const params = ref({
   pagenum: 1,
   pagesize: 5,
-  cate_id: '', //默认文章分类下拉菜单的选择
+  cate_id: '',
   state: ''
 })
 </script>
@@ -47,7 +47,7 @@ const params = ref({
         <EditSelect v-model="params.cate_id"></EditSelect>
       </el-form-item>
       <el-form-item label="发布状态">
-        <el-select v-model="params.state">
+        <el-select v-model="">
           <el-option label="已发布" value="已发布"></el-option>
           <el-option label="草稿" value="草稿"></el-option>
         </el-select>

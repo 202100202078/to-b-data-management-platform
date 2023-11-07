@@ -27,7 +27,6 @@ const handleDelete = (row) => {
   console.log(row)
 }
 
-//请求参数的存储
 const params = ref({
   pagenum: 1,
   pagesize: 5,

@@ -27,11 +27,11 @@ const handleDelete = (row) => {
   console.log(row)
 }
 
-//请求参数的存储
+//默认文章分类下拉菜单的选择
 const params = ref({
   pagenum: 1,
   pagesize: 5,
-  cate_id: '', //默认文章分类下拉菜单的选择
+  cate_id: '',
   state: ''
 })
 </script>
