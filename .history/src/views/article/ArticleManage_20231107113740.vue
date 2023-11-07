@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-import { Delete, Edit } from '@element-plus/icons-vue'
+import {
+  Check,
+  Delete,
+  Edit,
+  Message,
+  Search,
+  Star
+} from '@element-plus/icons-vue'
 const articleList = ref([
   {
     id: 5961,
@@ -17,14 +24,6 @@ const articleList = ref([
     cate_name: '体育'
   }
 ])
-
-const handleEdit = (row) => {
-  console.log(row)
-}
-
-const handleDelete = (row) => {
-  console.log(row)
-}
 </script>
 
 <template>
@@ -53,11 +52,11 @@ const handleDelete = (row) => {
     </el-form>
     <!-- 主体表格 -->
     <el-table :data="articleList" style="width: 100%">
-      <el-table-column prop="title" label="文章标题" width="300">
-        <template #default="{ row }">
-          <el-link type="primary" :underline="false">{{ row.title }}</el-link>
-        </template>
-      </el-table-column>
+      <el-table-column
+        prop="title"
+        label="文章标题"
+        width="300"
+      ></el-table-column>
       <el-table-column
         prop="cate_name"
         label="分类"

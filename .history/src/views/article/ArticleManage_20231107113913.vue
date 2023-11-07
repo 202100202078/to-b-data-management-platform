@@ -17,14 +17,6 @@ const articleList = ref([
     cate_name: '体育'
   }
 ])
-
-const handleEdit = (row) => {
-  console.log(row)
-}
-
-const handleDelete = (row) => {
-  console.log(row)
-}
 </script>
 
 <template>

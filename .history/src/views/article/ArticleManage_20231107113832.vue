@@ -17,14 +17,6 @@ const articleList = ref([
     cate_name: '体育'
   }
 ])
-
-const handleEdit = (row) => {
-  console.log(row)
-}
-
-const handleDelete = (row) => {
-  console.log(row)
-}
 </script>
 
 <template>
@@ -54,9 +46,7 @@ const handleDelete = (row) => {
     <!-- 主体表格 -->
     <el-table :data="articleList" style="width: 100%">
       <el-table-column prop="title" label="文章标题" width="300">
-        <template #default="{ row }">
-          <el-link type="primary" :underline="false">{{ row.title }}</el-link>
-        </template>
+        <template #default="{ row }"> </template>
       </el-table-column>
       <el-table-column
         prop="cate_name"

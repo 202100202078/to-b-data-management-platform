@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Delete, Edit } from '@element-plus/icons-vue'
+
 const articleList = ref([
   {
     id: 5961,
@@ -17,14 +17,6 @@ const articleList = ref([
     cate_name: '体育'
   }
 ])
-
-const handleEdit = (row) => {
-  console.log(row)
-}
-
-const handleDelete = (row) => {
-  console.log(row)
-}
 </script>
 
 <template>
@@ -53,11 +45,11 @@ const handleDelete = (row) => {
     </el-form>
     <!-- 主体表格 -->
     <el-table :data="articleList" style="width: 100%">
-      <el-table-column prop="title" label="文章标题" width="300">
-        <template #default="{ row }">
-          <el-link type="primary" :underline="false">{{ row.title }}</el-link>
-        </template>
-      </el-table-column>
+      <el-table-column
+        prop="title"
+        label="文章标题"
+        width="300"
+      ></el-table-column>
       <el-table-column
         prop="cate_name"
         label="分类"
@@ -67,22 +59,15 @@ const handleDelete = (row) => {
       <el-table-column prop="state" label="状态" width="120"></el-table-column>
       <el-table-column label="操作" width="120">
         <template #default="{ row }">
+          <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+            >Edit</el-button
+          >
           <el-button
-            plain
-            :icon="Edit"
-            circle
-            type="primary"
             size="small"
-            @click="handleEdit(row)"
-          ></el-button>
-          <el-button
-            plain
-            :icon="Delete"
-            circle
             type="danger"
-            size="small"
-            @click="handleDelete(row)"
-          ></el-button>
+            @click="handleDelete(scope.$index, scope.row)"
+            >Delete</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
