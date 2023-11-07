@@ -25,7 +25,7 @@ const emit = defineEmits(['update:modelValue'])
   <el-select
     :modelValue="modelValue"
     @update:modelValue="emit('update:modelValue', $event)"
-    :style="{ width }"
+    :width="width"
   >
     <el-option
       v-for="channel in channelList"

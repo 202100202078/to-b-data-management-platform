@@ -37,11 +37,7 @@ defineExpose({
 </script>
 
 <template>
-  <el-drawer
-    v-model="visibleDrawer"
-    :title="formModel?.id ? '编辑文章' : '发布文章'"
-    size="50%"
-  >
+  <el-drawer v-model="visibleDrawer" title="发布文章" size="50%">
     <el-form :model="formModel" ref="formRef" label-width="100px">
       <el-form-item label="文章标题" prop="title">
         <el-input
@@ -53,7 +49,10 @@ defineExpose({
         <!-- 下拉菜单 -->
         <EditSelect v-model="formModel.cate_id" width="100%"></EditSelect>
       </el-form-item>
-      <el-form-item label="文章封面" prop="cover_img"> 封面 </el-form-item>
+      <el-form-item label="文章内容" prop="content">
+        <!-- 富文本编辑器 -->
+        编辑器
+      </el-form-item>
       <el-form-item label="文章内容" prop="content">
         <!-- 富文本编辑器 -->
         编辑器
