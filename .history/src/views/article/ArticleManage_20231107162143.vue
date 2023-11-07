@@ -21,6 +21,20 @@ const params = ref({
   state: ''
 })
 
+import request from '@/utils/request.js'
+let formdata = new FormData();
+formdata.append("cover_img", fileInput.files[0], "C:\Users\lenovo\Pictures\Saved Pictures\Snipaste_2022-05-26_10-04-36.png");
+
+const data = {
+  title: '我是标题',
+  cate_id: '69003',
+  content: '我是内容',
+  cover_img:
+    'https://tse2-mm.cn.bing.net/th/id/OIP-C.vzsCqquEz2Qmuo9_Vymm1gHaJ4?pid=ImgDet&rs=1',
+  state: '已发布'
+}
+await request.post('/my/article/add', data)
+
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {

@@ -21,7 +21,22 @@ const params = ref({
   state: ''
 })
 
-const articleList = ref([])
+const articleList = ref([
+  {
+    id: 5961,
+    title: '新的文章啊',
+    pub_date: '2022-07-10 14:53:52.604',
+    state: '已发布',
+    cate_name: '体育'
+  },
+  {
+    id: 5962,
+    title: '新的文章啊',
+    pub_date: '2022-07-10 14:54:30.904',
+    state: '草稿',
+    cate_name: '体育'
+  }
+])
 const totalCount = ref(0)
 const getArticleList = async () => {
   const res = await articleGetArticleListService(params.value)

@@ -21,6 +21,12 @@ const params = ref({
   state: ''
 })
 
+const data = {
+  title:'我是标题',
+  cate_id:'69003',
+  
+}
+
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {

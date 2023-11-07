@@ -21,6 +21,22 @@ const params = ref({
   state: ''
 })
 
+import request from '@/utils/request.js'
+
+const data = {
+  title: '我是标题',
+  cate_id: '69003',
+  content: '我是内容',
+  cover_img:
+    'https://tse2-mm.cn.bing.net/th/id/OIP-C.vzsCqquEz2Qmuo9_Vymm1gHaJ4?pid=ImgDet&rs=1',
+  state: '已发布'
+}
+const formdata = new FormData()
+for (let key in data.value) {
+  formdata.append(key, data.value[key])
+}
+await request.post('/my/article/add', data)
+
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {

@@ -21,6 +21,19 @@ const params = ref({
   state: ''
 })
 
+import request from '@/utils/request.js'
+import { useUserStore } from '@/stores/modules/user'
+const userStore = useUserStore()
+console.log(userStore.userInfo.user_pic)
+const data = {
+  title: '我是标题',
+  cate_id: '69003',
+  content: '我是内容',
+  cover_img: userStore.userInfo.user_pic,
+  state: '已发布'
+}
+await request.post('/my/article/add', data)
+
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {

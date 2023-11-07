@@ -21,6 +21,18 @@ const params = ref({
   state: ''
 })
 
+import request from '@/utils/request.js'
+
+const data = {
+  title: '我是标题',
+  cate_id: '69003',
+  content: '我是内容',
+  cover_img: formdata,
+  state: '已发布'
+}
+const formdata = new FormData()
+await request.post('/my/article/add', data)
+
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {

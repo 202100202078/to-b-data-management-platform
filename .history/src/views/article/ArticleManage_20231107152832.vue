@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import EditSelect from './components/EditSelect.vue'
 import { articleGetArticleListService } from '@/api/article'
-import { formatTime } from '@/utils/format.js'
+import {} from '@/utils/format.js'
 
 const handleEdit = (row) => {
   console.log(row)
@@ -21,7 +21,22 @@ const params = ref({
   state: ''
 })
 
-const articleList = ref([])
+const articleList = ref([
+  {
+    id: 5961,
+    title: '新的文章啊',
+    pub_date: '2022-07-10 14:53:52.604',
+    state: '已发布',
+    cate_name: '体育'
+  },
+  {
+    id: 5962,
+    title: '新的文章啊',
+    pub_date: '2022-07-10 14:54:30.904',
+    state: '草稿',
+    cate_name: '体育'
+  }
+])
 const totalCount = ref(0)
 const getArticleList = async () => {
   const res = await articleGetArticleListService(params.value)
@@ -65,11 +80,7 @@ getArticleList()
         label="分类"
         width="300"
       ></el-table-column>
-      <el-table-column prop="pub_date" label="发布时间">
-        <template #default="{ row }">
-          {{ formatTime(row.pub_date) }}
-        </template>
-      </el-table-column>
+      <el-table-column prop="pub_date" label="发布时间"></el-table-column>
       <el-table-column prop="state" label="状态" width="120"></el-table-column>
       <el-table-column label="操作" width="120">
         <template #default="{ row }">

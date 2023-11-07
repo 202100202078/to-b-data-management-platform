@@ -15,8 +15,6 @@ export const articleDeleteChannelService = (id) =>
     }
   })
 
+
 //文章：获取文章列表
-export const articleGetArticleListService = (params) =>
-  request.get('/my/article/list', {
-    params
-  })
+export const articleGetArticleListService = (params) => request.get()

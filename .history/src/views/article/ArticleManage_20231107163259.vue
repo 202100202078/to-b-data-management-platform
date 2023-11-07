@@ -21,6 +21,21 @@ const params = ref({
   state: ''
 })
 
+import request from '@/utils/request.js'
+
+const testFn = async () => {
+  var formdata = new FormData()
+  formdata.append('title', '文章标题')
+  formdata.append('cate_id', '1284')
+  formdata.append('content', '示例内容')
+  formdata.append(
+    'cover_img',
+    fileInput.files[0],
+    'C:\Users\lenovo\Pictures\Saved Pictures\Snipaste_2022-05-26_10-04-36.png'
+  )
+  formdata.append('state', '已发布')
+  await request.post('/my/article/add', formdata)
+}
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {
@@ -35,7 +50,7 @@ getArticleList()
 <template>
   <PageContainer title="文章管理">
     <template #extra>
-      <el-button type="primary">发布文章</el-button>
+      <el-button type="primary" @click="testFn">发布文章</el-button>
     </template>
     <!-- 筛选表单 -->
     <el-form :inline="true">

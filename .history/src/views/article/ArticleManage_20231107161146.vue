@@ -21,6 +21,10 @@ const params = ref({
   state: ''
 })
 
+const data = {
+  title:''
+}
+
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {

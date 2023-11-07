@@ -2,8 +2,6 @@
 import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import EditSelect from './components/EditSelect.vue'
-import { articleGetArticleListService } from '@/api/article'
-import { formatTime } from '@/utils/format.js'
 
 const handleEdit = (row) => {
   console.log(row)
@@ -20,16 +18,6 @@ const params = ref({
   cate_id: '', //默认文章分类下拉菜单的选择
   state: ''
 })
-
-const articleList = ref([])
-const totalCount = ref(0)
-const getArticleList = async () => {
-  const res = await articleGetArticleListService(params.value)
-  articleList.value = res.data.data
-  totalCount.value = res.data.total
-  console.log(articleList.value)
-}
-getArticleList()
 </script>
 
 <template>
@@ -65,11 +53,7 @@ getArticleList()
         label="分类"
         width="300"
       ></el-table-column>
-      <el-table-column prop="pub_date" label="发布时间">
-        <template #default="{ row }">
-          {{ formatTime(row.pub_date) }}
-        </template>
-      </el-table-column>
+      <el-table-column prop="pub_date" label="发布时间"></el-table-column>
       <el-table-column prop="state" label="状态" width="120"></el-table-column>
       <el-table-column label="操作" width="120">
         <template #default="{ row }">
