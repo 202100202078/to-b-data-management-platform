@@ -18,7 +18,7 @@ const formModel = ref({
 })
 const imgUrl = ref('')
 const onChangeFile = (uploadFile) => {
-  // console.log(uploadFile)
+  console.log(uploadFile)
   //存储图片文件url
   imgUrl.value = URL.createObjectURL(uploadFile.raw)
   //存储到formModel
@@ -69,7 +69,7 @@ defineExpose({
           :auto-upload="false"
           :on-change="onChangeFile"
         >
-          <img v-if="imgUrl" :src="imgUrl" class="avatar" />
+          <img v-if="imgUrl" :src="imageUrl" class="avatar" />
           <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
         </el-upload>
       </el-form-item>

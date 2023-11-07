@@ -69,7 +69,7 @@ defineExpose({
           :auto-upload="false"
           :on-change="onChangeFile"
         >
-          <img v-if="imgUrl" :src="imgUrl" class="avatar" />
+          <img v-if="imgUrl" :src="imageUrl" class="avatar" />
           <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
         </el-upload>
       </el-form-item>

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import EditSelect from './EditSelect.vue'
-import { Plus } from '@element-plus/icons-vue'
+import { Plus } from '@element-plus/icons-vue/dist/types'
 
 const visibleDrawer = ref(false)
 
@@ -17,13 +17,7 @@ const formModel = ref({
   ...defaultForm
 })
 const imgUrl = ref('')
-const onChangeFile = (uploadFile) => {
-  // console.log(uploadFile)
-  //存储图片文件url
-  imgUrl.value = URL.createObjectURL(uploadFile.raw)
-  //存储到formModel
-  formModel.value.cover_img = uploadFile.raw
-}
+const onChangeFile = (uploadFile) => {}
 
 //向外暴露方法open
 const open = (obj) => {
@@ -69,7 +63,7 @@ defineExpose({
           :auto-upload="false"
           :on-change="onChangeFile"
         >
-          <img v-if="imgUrl" :src="imgUrl" class="avatar" />
+          <img v-if="imgUrl" :src="imageUrl" class="avatar" />
           <el-icon v-else class="avatar-uploader-icon"><Plus /></el-icon>
         </el-upload>
       </el-form-item>
@@ -85,33 +79,3 @@ defineExpose({
     </el-form>
   </el-drawer>
 </template>
-
-<style lang="scss" scoped>
-.avatar-uploader {
-  :deep() {
-    .avatar {
-      width: 178px;
-      height: 178px;
-      display: block;
-    }
-    .el-upload {
-      border: 1px dashed var(--el-border-color);
-      border-radius: 6px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: var(--el-transition-duration-fast);
-    }
-    .el-upload:hover {
-      border-color: var(--el-color-primary);
-    }
-    .el-icon.avatar-uploader-icon {
-      font-size: 28px;
-      color: #8c939d;
-      width: 178px;
-      height: 178px;
-      text-align: center;
-    }
-  }
-}
-</style>
