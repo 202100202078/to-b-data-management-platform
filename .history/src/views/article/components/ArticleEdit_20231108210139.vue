@@ -6,7 +6,8 @@ import { QuillEditor } from '@vueup/vue-quill'
 import {
   articlePublishService,
   articleGetDetailService,
-  articleUpdateDetailService
+  articleUpdateDetailService,
+  articleDeleteService
 } from '@/api/article.js'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import { ElMessage } from 'element-plus'

@@ -22,7 +22,6 @@ const handleDelete = async (row) => {
   //删除之后可能该页不存在了，因此跳到第一页
   params.value.pagenum = 1
   ElMessage.success('删除成功')
-  getArticleList()
 }
 
 const ArticleEditRef = ref()

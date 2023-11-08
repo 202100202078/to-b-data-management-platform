@@ -3,12 +3,8 @@ import { ref } from 'vue'
 import { Delete, Edit } from '@element-plus/icons-vue'
 import EditSelect from './components/EditSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
-import {
-  articleGetArticleListService,
-  articleDeleteService
-} from '@/api/article'
+import { articleGetArticleListService } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
-import { ElMessage } from 'element-plus'
 //加载中
 const isLoading = ref(false)
 
@@ -17,12 +13,8 @@ const handleEdit = (row) => {
   ArticleEditRef.value.open(row)
 }
 //删除文章
-const handleDelete = async (row) => {
-  await articleDeleteService(row.id)
-  //删除之后可能该页不存在了，因此跳到第一页
-  params.value.pagenum = 1
-  ElMessage.success('删除成功')
-  getArticleList()
+const handleDelete = (row) => {
+  console.log(row)
 }
 
 const ArticleEditRef = ref()

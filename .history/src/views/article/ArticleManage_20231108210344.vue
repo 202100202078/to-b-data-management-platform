@@ -8,7 +8,6 @@ import {
   articleDeleteService
 } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
-import { ElMessage } from 'element-plus'
 //加载中
 const isLoading = ref(false)
 
@@ -21,8 +20,6 @@ const handleDelete = async (row) => {
   await articleDeleteService(row.id)
   //删除之后可能该页不存在了，因此跳到第一页
   params.value.pagenum = 1
-  ElMessage.success('删除成功')
-  getArticleList()
 }
 
 const ArticleEditRef = ref()

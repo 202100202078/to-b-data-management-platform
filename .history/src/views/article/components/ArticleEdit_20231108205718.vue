@@ -129,10 +129,7 @@ const onPublish = async (type) => {
 
   //分为 编辑与发布 操作
   if (formModel.value.id) {
-    await articleUpdateDetailService(fd)
-    ElMessage.success('编辑成功')
-    visibleDrawer.value = false
-    emit('success', 'edit')
+    console.log('编辑')
   } else {
     await articlePublishService(fd)
     ElMessage.success('发布成功')

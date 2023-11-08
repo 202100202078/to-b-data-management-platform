@@ -32,9 +32,4 @@ export const articleGetDetailService = (id) =>
 export const articleUpdateDetailService = (data) =>
   request.put('/my/article/info', data)
 //文章：删除文章
-export const articleDeleteService = (id) =>
-  request.delete('/my/article/info', {
-    params: {
-      id
-    }
-  })
+export const articleDeleteService = (id) => request.delete('/my/article/info')

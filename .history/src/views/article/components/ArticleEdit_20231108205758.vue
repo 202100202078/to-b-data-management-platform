@@ -132,7 +132,7 @@ const onPublish = async (type) => {
     await articleUpdateDetailService(fd)
     ElMessage.success('编辑成功')
     visibleDrawer.value = false
-    emit('success', 'edit')
+    emit('success', 'emit')
   } else {
     await articlePublishService(fd)
     ElMessage.success('发布成功')
