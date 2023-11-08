@@ -9,30 +9,7 @@ import {
 } from '@/api/article.js'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import { ElMessage } from 'element-plus'
-import { baseURL } from '@/utils/request'
-import axios from 'axios'
-
-// 将网络图片地址转换为File对象
-async function imageUrlToFile(url, fileName) {
-  try {
-    // 第一步：使用axios获取网络图片数据
-    const response = await axios.get(url, { responseType: 'arraybuffer' })
-    const imageData = response.data
-
-    // 第二步：将图片数据转换为Blob对象
-    const blob = new Blob([imageData], {
-      type: response.headers['content-type']
-    })
-
-    // 第三步：创建一个新的File对象
-    const file = new File([blob], fileName, { type: blob.type })
-
-    return file
-  } catch (error) {
-    console.error('将图片转换为File对象时发生错误:', error)
-    throw error
-  }
-}
+import { baseUrl } from '@/utils/request'
 
 //抽屉的显示和隐藏
 const visibleDrawer = ref(false)
@@ -78,8 +55,8 @@ const changeQuillEditor = () => {
 
 const imgUrl = ref('')
 const onChangeFile = (uploadFile) => {
-  console.log(uploadFile)
-  //存储图片文件的 图片网络地址
+  // console.log(uploadFile)
+  //存储图片文件url
   imgUrl.value = URL.createObjectURL(uploadFile.raw)
   //存储到formModel
   formModel.value.cover_img = uploadFile.raw
@@ -94,13 +71,6 @@ const open = async (row) => {
     // console.log('编辑回显')
     const res = await articleGetDetailService(row.id)
     formModel.value = res.data.data
-    //单独处理封面imgUrl
-    imgUrl.value = baseURL + formModel.value.cover_img
-    //后续提交数据到后台做编辑时，参数cover_img需要的是file类型，这里提前转换一下
-    formModel.value.cover_img = await imageUrlToFile(
-      imgUrl.value,
-      formModel.value.cover_img
-    )
   } else {
     console.log('添加功能')
     formModel.value = { ...defaultForm }

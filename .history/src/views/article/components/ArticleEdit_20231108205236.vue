@@ -10,7 +10,6 @@ import {
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import { ElMessage } from 'element-plus'
 import { baseURL } from '@/utils/request'
-import axios from 'axios'
 
 // 将网络图片地址转换为File对象
 async function imageUrlToFile(url, fileName) {
@@ -97,10 +96,6 @@ const open = async (row) => {
     //单独处理封面imgUrl
     imgUrl.value = baseURL + formModel.value.cover_img
     //后续提交数据到后台做编辑时，参数cover_img需要的是file类型，这里提前转换一下
-    formModel.value.cover_img = await imageUrlToFile(
-      imgUrl.value,
-      formModel.value.cover_img
-    )
   } else {
     console.log('添加功能')
     formModel.value = { ...defaultForm }

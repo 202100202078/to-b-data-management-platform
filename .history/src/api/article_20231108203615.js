@@ -24,7 +24,4 @@ export const articleGetArticleListService = (params) =>
 export const articlePublishService = (data) =>
   request.post('/my/article/add', data)
 //文章：获取文章详情
-export const articleGetDetailService = (id) =>
-  request.get('/my/article/info', {
-    params: { id }
-  })
+export const articleGetDetailService = (id) => request.get('')

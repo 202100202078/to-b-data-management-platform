@@ -10,7 +10,6 @@ import {
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import { ElMessage } from 'element-plus'
 import { baseURL } from '@/utils/request'
-import axios from 'axios'
 
 // 将网络图片地址转换为File对象
 async function imageUrlToFile(url, fileName) {
