@@ -65,9 +65,8 @@ const open = async (row) => {
     console.log('添加功能')
     formModel.value = { ...defaultForm }
     //手动重置头像与富文本编辑器
-    imgUrl.value = ''
-    formModel.value.content = '<p><br></p>'
-    //清理表单验证提示
+    // imgUrl.value = ''
+    // formModel.value.content = '<p><br></p>'
     formRef.value.resetFields()
   }
 }
