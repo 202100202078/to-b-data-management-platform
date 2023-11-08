@@ -54,7 +54,6 @@ const onChangeFile = (uploadFile) => {
   imgUrl.value = URL.createObjectURL(uploadFile.raw)
   //存储到formModel
   formModel.value.cover_img = uploadFile.raw
-  //清除表单项验证信息
   formRef.value.clearValidate('cover_img')
 }
 

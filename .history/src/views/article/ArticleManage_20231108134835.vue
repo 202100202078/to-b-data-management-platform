@@ -31,22 +31,6 @@ const params = ref({
   state: ''
 })
 
-const handleSizeChange = (size) => {
-  // console.log('每页条数', size)
-  //当每页条数变化时，可能当前页数已经不存在了
-  //因此我们统一重新请求渲染第一页数据
-  params.value.pagenum = 1
-  params.value.pagesize = size
-  getArticleList()
-}
-
-const handleCurrentChange = (page) => {
-  // console.log('当前在第几页', page)
-  //根据页数重新请求渲染即可
-  params.value.pagenum = page
-  getArticleList()
-}
-
 const articleList = ref([])
 const totalCount = ref(0)
 const getArticleList = async () => {
@@ -130,7 +114,6 @@ getArticleList()
       :total="totalCount"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      style="margin-top: 20px; justify-content: center"
     />
     <!-- 抽屉 -->
     <ArticleEdit ref="ArticleEditRef"></ArticleEdit>

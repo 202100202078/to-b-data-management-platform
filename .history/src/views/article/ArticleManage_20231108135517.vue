@@ -41,10 +41,7 @@ const handleSizeChange = (size) => {
 }
 
 const handleCurrentChange = (page) => {
-  // console.log('当前在第几页', page)
-  //根据页数重新请求渲染即可
-  params.value.pagenum = page
-  getArticleList()
+  console.log('当前在第几页', page)
 }
 
 const articleList = ref([])

@@ -4,6 +4,7 @@ import EditSelect from './EditSelect.vue'
 import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
+import { formToJSON } from 'axios'
 
 //抽屉的显示和隐藏
 const visibleDrawer = ref(false)
@@ -25,7 +26,7 @@ const formModel = ref({
 
 const rules = {
   title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
-  cate_id: [{ required: true, message: '请选择文章分类', trigger: 'change' }],
+  cate_id: [{ required: true, message: '请选择文章分类', trigger: 'blur' }],
   cover_img: [{ required: true, message: '请上传封面图', trigger: 'blur' }],
   content: [
     {
@@ -54,8 +55,7 @@ const onChangeFile = (uploadFile) => {
   imgUrl.value = URL.createObjectURL(uploadFile.raw)
   //存储到formModel
   formModel.value.cover_img = uploadFile.raw
-  //清除表单项验证信息
-  formRef.value.clearValidate('cover_img')
+  formRef.value
 }
 
 //向外暴露方法open
