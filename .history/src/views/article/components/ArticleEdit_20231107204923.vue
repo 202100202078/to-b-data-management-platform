@@ -28,13 +28,18 @@ const onChangeFile = (uploadFile) => {
 }
 
 //向外暴露方法open
-const open = async (row) => {
+const open = (obj) => {
+  //显示抽屉
   visibleDrawer.value = true
-  if (row.id) {
-    console.log('编辑回显')
+  //如果当前obj是空，那么是新增文章
+  //反之为编辑文章
+  if (obj.id) {
+    //基于row.id发送请求，获取编辑对应的详情数据进行回显(因为row数据不足以回显)
+    console.log('回显数据')
   } else {
-    console.log('添加功能')
+    //要先清空表单
     formModel.value = { ...defaultForm }
+    console.log('添加')
   }
 }
 defineExpose({
@@ -45,13 +50,15 @@ defineExpose({
 <template>
   <el-drawer
     v-model="visibleDrawer"
-    :title="formModel.id ? '编辑文章' : '发布文章'"
-    direction="rtl"
+    :title="formModel?.id ? '编辑文章' : '发布文章'"
     size="50%"
   >
     <el-form :model="formModel" ref="formRef" label-width="100px">
       <el-form-item label="文章标题" prop="title">
-        <el-input v-model="formModel.title" placeholder="请输入标题"></el-input>
+        <el-input
+          v-model="formModel.title"
+          placeholder="请输入文章标题"
+        ></el-input>
       </el-form-item>
       <el-form-item label="文章分类" prop="cate_id">
         <!-- 下拉菜单 -->
@@ -114,12 +121,6 @@ defineExpose({
       height: 178px;
       text-align: center;
     }
-  }
-}
-.editor {
-  width: 100%;
-  :deep(.ql-editor) {
-    min-height: 200px;
   }
 }
 </style>

@@ -28,13 +28,18 @@ const onChangeFile = (uploadFile) => {
 }
 
 //向外暴露方法open
-const open = async (row) => {
+const open = (obj) => {
+  //显示抽屉
   visibleDrawer.value = true
-  if (row.id) {
-    console.log('编辑回显')
+  //如果当前obj是空，那么是新增文章
+  //反之为编辑文章
+  if (obj.id) {
+    //基于row.id发送请求，获取编辑对应的详情数据进行回显(因为row数据不足以回显)
+    console.log('回显数据')
   } else {
-    console.log('添加功能')
+    //要先清空表单
     formModel.value = { ...defaultForm }
+    console.log('添加')
   }
 }
 defineExpose({
@@ -45,7 +50,7 @@ defineExpose({
 <template>
   <el-drawer
     v-model="visibleDrawer"
-    :title="formModel.id ? '编辑文章' : '发布文章'"
+    :title="formModel?.id ? '编辑文章' : '发布文章'"
     direction="rtl"
     size="50%"
   >

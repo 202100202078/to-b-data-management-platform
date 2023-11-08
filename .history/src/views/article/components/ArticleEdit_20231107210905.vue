@@ -30,11 +30,10 @@ const onChangeFile = (uploadFile) => {
 //向外暴露方法open
 const open = async (row) => {
   visibleDrawer.value = true
-  if (row.id) {
+  if (row?.id) {
     console.log('编辑回显')
   } else {
     console.log('添加功能')
-    formModel.value = { ...defaultForm }
   }
 }
 defineExpose({

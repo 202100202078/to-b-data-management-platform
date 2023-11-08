@@ -34,7 +34,6 @@ const open = async (row) => {
     console.log('编辑回显')
   } else {
     console.log('添加功能')
-    formModel.value = { ...defaultForm }
   }
 }
 defineExpose({

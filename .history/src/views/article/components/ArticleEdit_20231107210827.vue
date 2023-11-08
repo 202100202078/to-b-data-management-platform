@@ -34,7 +34,6 @@ const open = async (row) => {
     console.log('编辑回显')
   } else {
     console.log('添加功能')
-    formModel.value = { ...defaultForm }
   }
 }
 defineExpose({
@@ -45,7 +44,7 @@ defineExpose({
 <template>
   <el-drawer
     v-model="visibleDrawer"
-    :title="formModel.id ? '编辑文章' : '发布文章'"
+    :title="formModel?.id ? '编辑文章' : '发布文章'"
     direction="rtl"
     size="50%"
   >
