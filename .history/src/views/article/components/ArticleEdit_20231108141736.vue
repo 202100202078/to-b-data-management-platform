@@ -3,9 +3,7 @@ import { ref } from 'vue'
 import EditSelect from './EditSelect.vue'
 import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
-import { articlePublishService } from '@/api/article.js'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import { ElMessage } from 'element-plus'
 
 //抽屉的显示和隐藏
 const visibleDrawer = ref(false)
@@ -76,30 +74,8 @@ const open = async (row) => {
   }
 }
 
-const emit = defineEmits(['success'])
-
-const onPublish = async (type) => {
-  //进行表单验证
-  await formRef.value.validate()
-  //存储到数据中
-  formModel.value.state = type
-
-  //转为FormData
-  const fd = new FormData()
-  for (let key in formModel.value) {
-    fd.append(key, formModel.value[key])
-  }
-
-  //分为 编辑与发布 操作
-  if (formModel.value.id) {
-    console.log('编辑')
-  } else {
-    await articlePublishService(fd)
-    ElMessage.success('发布成功')
-    visibleDrawer.value = false
-    //如果发布成功需要渲染最后一页,编辑成功渲染当前页即可
-    emit('success', 'add')
-  }
+const onPublish = () => {
+  formRef.value.validate()
 }
 defineExpose({
   open

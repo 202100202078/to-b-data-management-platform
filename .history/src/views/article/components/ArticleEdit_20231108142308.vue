@@ -5,7 +5,6 @@ import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import { articlePublishService } from '@/api/article.js'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
-import { ElMessage } from 'element-plus'
 
 //抽屉的显示和隐藏
 const visibleDrawer = ref(false)
@@ -76,8 +75,6 @@ const open = async (row) => {
   }
 }
 
-const emit = defineEmits(['success'])
-
 const onPublish = async (type) => {
   //进行表单验证
   await formRef.value.validate()
@@ -95,10 +92,6 @@ const onPublish = async (type) => {
     console.log('编辑')
   } else {
     await articlePublishService(fd)
-    ElMessage.success('发布成功')
-    visibleDrawer.value = false
-    //如果发布成功需要渲染最后一页,编辑成功渲染当前页即可
-    emit('success', 'add')
   }
 }
 defineExpose({

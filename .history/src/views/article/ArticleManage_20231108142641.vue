@@ -75,17 +75,8 @@ const getArticleList = async () => {
 //文章表格数据的获取
 getArticleList()
 
-//处理操作成功
-const handleSuccess = (type) => {
-  if (type === 'add') {
-    //发布成功,渲染最后一页数据
-    const lastPage = Math.ceil((totalCount.value + 1) / params.value.pagesize)
-    params.value.pagenum = lastPage
-    getArticleList()
-  } else {
-    console.log('编辑成功')
-  }
-}
+//处理发布成功
+const handleSuccess = () => {}
 </script>
 
 <template>

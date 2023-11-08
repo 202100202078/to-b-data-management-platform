@@ -80,8 +80,8 @@ const handleSuccess = (type) => {
   if (type === 'add') {
     //发布成功,渲染最后一页数据
     const lastPage = Math.ceil((totalCount.value + 1) / params.value.pagesize)
+    console.log(lastPage)
     params.value.pagenum = lastPage
-    getArticleList()
   } else {
     console.log('编辑成功')
   }

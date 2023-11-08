@@ -76,8 +76,6 @@ const open = async (row) => {
   }
 }
 
-const emit = defineEmits(['success'])
-
 const onPublish = async (type) => {
   //进行表单验证
   await formRef.value.validate()
@@ -97,8 +95,6 @@ const onPublish = async (type) => {
     await articlePublishService(fd)
     ElMessage.success('发布成功')
     visibleDrawer.value = false
-    //如果发布成功需要渲染最后一页,编辑成功渲染当前页即可
-    emit('success', 'add')
   }
 }
 defineExpose({

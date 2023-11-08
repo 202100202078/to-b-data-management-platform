@@ -20,6 +20,5 @@ export const articleGetArticleListService = (params) =>
   request.get('/my/article/list', {
     params
   })
-//文章：发布文章(参数是formData)
-export const articlePublishService = (data) =>
-  request.post('/my/article/add', data)
+//文章：发布文章
+export const articlePublishService = (data) => request.post('')
