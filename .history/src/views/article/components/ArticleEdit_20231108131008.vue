@@ -23,6 +23,9 @@ const formModel = ref({
   ...defaultForm
 })
 
+const validateContent = (rule, value) => {
+  console.log(value)
+}
 const rules = {
   title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
   cate_id: [{ required: true, message: '请选择文章分类', trigger: 'blur' }],

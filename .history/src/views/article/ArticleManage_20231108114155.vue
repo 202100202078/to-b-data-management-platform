@@ -38,7 +38,7 @@ const getArticleList = async () => {
   articleList.value = res.data.data
   totalCount.value = res.data.total
   // console.log(articleList.value)
-  isLoading.value = false
+  isLoading
 }
 //文章表格数据的获取
 getArticleList()

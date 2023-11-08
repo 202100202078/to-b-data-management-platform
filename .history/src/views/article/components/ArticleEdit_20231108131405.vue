@@ -26,7 +26,18 @@ const formModel = ref({
 const rules = {
   title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
   cate_id: [{ required: true, message: '请选择文章分类', trigger: 'blur' }],
-  cover_img: [{ required: true, message: '请上传封面图', trigger: 'blur' }],
+  cover_img: [
+    {
+      validator: (rule, value, callback) => {
+        if (imgUrl.value === '') {
+          callback(new Error('请选择你的文章封面'))
+        } else {
+          callback()
+        }
+      },
+      trigger: 'change'
+    }
+  ],
   content: [
     {
       validator: (rule, value, callback) => {

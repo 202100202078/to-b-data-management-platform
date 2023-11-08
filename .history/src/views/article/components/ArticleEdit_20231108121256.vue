@@ -27,23 +27,17 @@ const rules = {
   title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
   cate_id: [{ required: true, message: '请选择文章分类', trigger: 'blur' }],
   cover_img: [{ required: true, message: '请上传封面图', trigger: 'blur' }],
-  content: [
-    {
-      validator: (rule, value, callback) => {
-        if (value === '<p><br></p>') {
-          callback(new Error('请输入文章内容'))
-        } else {
-          callback()
-        }
-      },
-      trigger: 'blur'
-    }
-  ]
+  content: [{ required: true, message: '请输入文章内容' }]
 }
-
-// "<p><br></p>"
+const quillEditor = ref()
+quillEditor.value.on('text-change', function (delta, oldDelta, source) {
+  if (source == 'api') {
+    console.log('An API call triggered this change.')
+  } else if (source == 'user') {
+    console.log('A user action triggered this change.')
+  }
+})
 const changeQuillEditor = () => {
-  // console.log(1)
   formRef.value.validateField('content')
 }
 
@@ -118,7 +112,7 @@ defineExpose({
             v-model:content="formModel.content"
             contentType="html"
             ref="quillEditor"
-            @blur="changeQuillEditor"
+            @textChange="changeQuillEditor"
           >
           </quill-editor>
         </div>

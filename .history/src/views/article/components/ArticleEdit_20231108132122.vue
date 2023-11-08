@@ -67,7 +67,7 @@ const open = async (row) => {
     //手动重置头像与富文本编辑器
     imgUrl.value = ''
     formModel.value.content = '<p><br></p>'
-    // formModel.value.resetField()
+    formModel.value.resetField()
   }
 }
 

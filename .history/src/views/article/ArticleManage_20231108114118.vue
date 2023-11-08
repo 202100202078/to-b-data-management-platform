@@ -5,9 +5,6 @@ import EditSelect from './components/EditSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
 import { articleGetArticleListService } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
-//加载中
-const isLoading = ref(true)
-
 //编辑文章
 const handleEdit = (row) => {
   ArticleEditRef.value.open(row)
@@ -37,8 +34,7 @@ const getArticleList = async () => {
   const res = await articleGetArticleListService(params.value)
   articleList.value = res.data.data
   totalCount.value = res.data.total
-  // console.log(articleList.value)
-  isLoading.value = false
+  console.log(articleList.value)
 }
 //文章表格数据的获取
 getArticleList()
@@ -66,7 +62,7 @@ getArticleList()
       </el-form-item>
     </el-form>
     <!-- 主体表格 -->
-    <el-table :data="articleList" style="width: 100%" v-loading="isLoading">
+    <el-table :data="articleList" style="width: 100%" v-loading="loading">
       <el-table-column prop="title" label="文章标题" width="300">
         <template #default="{ row }">
           <el-link type="primary" :underline="false">{{ row.title }}</el-link>

@@ -5,11 +5,7 @@ import { Plus } from '@element-plus/icons-vue'
 import { QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
-//抽屉的显示和隐藏
 const visibleDrawer = ref(false)
-
-//表单对象
-const formRef = ref()
 
 const defaultForm = {
   title: '',
@@ -22,31 +18,6 @@ const defaultForm = {
 const formModel = ref({
   ...defaultForm
 })
-
-const rules = {
-  title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
-  cate_id: [{ required: true, message: '请选择文章分类', trigger: 'blur' }],
-  cover_img: [{ required: true, message: '请上传封面图', trigger: 'blur' }],
-  content: [
-    {
-      validator: (rule, value, callback) => {
-        if (value === '<p><br></p>') {
-          callback(new Error('请输入文章内容'))
-        } else {
-          callback()
-        }
-      },
-      trigger: 'blur'
-    }
-  ]
-}
-
-// "<p><br></p>"
-const changeQuillEditor = () => {
-  // console.log(1)
-  formRef.value.validateField('content')
-}
-
 const imgUrl = ref('')
 const onChangeFile = (uploadFile) => {
   // console.log(uploadFile)
@@ -64,15 +35,9 @@ const open = async (row) => {
   } else {
     console.log('添加功能')
     formModel.value = { ...defaultForm }
-    //手动重置头像与富文本编辑器
     imgUrl.value = ''
     formModel.value.content = '<p><br></p>'
-    // formModel.value.resetField()
   }
-}
-
-const onPublish = () => {
-  formRef.value.validate()
 }
 defineExpose({
   open
@@ -86,12 +51,7 @@ defineExpose({
     direction="rtl"
     size="50%"
   >
-    <el-form
-      :model="formModel"
-      :rules="rules"
-      ref="formRef"
-      label-width="100px"
-    >
+    <el-form :model="formModel" ref="formRef" label-width="100px">
       <el-form-item label="文章标题" prop="title">
         <el-input v-model="formModel.title" placeholder="请输入标题"></el-input>
       </el-form-item>
@@ -117,15 +77,13 @@ defineExpose({
             theme="snow"
             v-model:content="formModel.content"
             contentType="html"
-            ref="quillEditor"
-            @blur="changeQuillEditor"
           >
           </quill-editor>
         </div>
       </el-form-item>
       <el-form-item>
         <!-- 按钮 -->
-        <el-button type="primary" @click="onPublish">发布</el-button>
+        <el-button type="primary">发布</el-button>
         <el-button type="info">草稿</el-button>
       </el-form-item>
     </el-form>
@@ -163,7 +121,7 @@ defineExpose({
 .editor {
   width: 100%;
   :deep(.ql-editor) {
-    min-height: 150px;
+    min-height: 200px;
   }
 }
 </style>

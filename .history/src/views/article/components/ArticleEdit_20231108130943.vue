@@ -23,15 +23,19 @@ const formModel = ref({
   ...defaultForm
 })
 
+const validateContent = (rule, value) => {
+  console.log(value)
+}
 const rules = {
   title: [{ required: true, message: '请输入文章标题', trigger: 'blur' }],
   cate_id: [{ required: true, message: '请选择文章分类', trigger: 'blur' }],
   cover_img: [{ required: true, message: '请上传封面图', trigger: 'blur' }],
+  // content: [{ required: true, message: '请输入文章内容' }],
   content: [
     {
       validator: (rule, value, callback) => {
-        if (value === '<p><br></p>') {
-          callback(new Error('请输入文章内容'))
+        if (value != formModel.value.password) {
+          callback(new Error('两次密码不一致'))
         } else {
           callback()
         }

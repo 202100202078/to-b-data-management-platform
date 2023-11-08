@@ -37,8 +37,7 @@ const getArticleList = async () => {
   const res = await articleGetArticleListService(params.value)
   articleList.value = res.data.data
   totalCount.value = res.data.total
-  // console.log(articleList.value)
-  isLoading.value = false
+  console.log(articleList.value)
 }
 //文章表格数据的获取
 getArticleList()
