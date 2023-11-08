@@ -42,7 +42,6 @@ const onReset = () => {
   params.value.pagenum = 1
   params.value.cate_id = ''
   params.value.state = ''
-  getArticleList()
 }
 
 //处理每页条数改变

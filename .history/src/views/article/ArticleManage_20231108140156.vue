@@ -32,16 +32,6 @@ const params = ref({
 })
 //处理搜索按钮
 const onSearch = () => {
-  //注意重置页面
-  params.value.pagenum = 1
-  getArticleList()
-}
-//处理重置按钮
-const onReset = () => {
-  //注意重置页面
-  params.value.pagenum = 1
-  params.value.cate_id = ''
-  params.value.state = ''
   getArticleList()
 }
 

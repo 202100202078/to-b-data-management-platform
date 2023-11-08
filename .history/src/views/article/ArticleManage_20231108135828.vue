@@ -5,6 +5,7 @@ import EditSelect from './components/EditSelect.vue'
 import ArticleEdit from './components/ArticleEdit.vue'
 import { articleGetArticleListService } from '@/api/article'
 import { formatTime } from '@/utils/format.js'
+import { tr } from 'element-plus/es/locale'
 //加载中
 const isLoading = ref(false)
 
@@ -30,22 +31,7 @@ const params = ref({
   cate_id: '', //默认文章分类下拉菜单的选择
   state: ''
 })
-//处理搜索按钮
-const onSearch = () => {
-  //注意重置页面
-  params.value.pagenum = 1
-  getArticleList()
-}
-//处理重置按钮
-const onReset = () => {
-  //注意重置页面
-  params.value.pagenum = 1
-  params.value.cate_id = ''
-  params.value.state = ''
-  getArticleList()
-}
 
-//处理每页条数改变
 const handleSizeChange = (size) => {
   // console.log('每页条数', size)
   //当每页条数变化时，可能当前页数已经不存在了
@@ -54,7 +40,7 @@ const handleSizeChange = (size) => {
   params.value.pagesize = size
   getArticleList()
 }
-//处理页码改变
+
 const handleCurrentChange = (page) => {
   // console.log('当前在第几页', page)
   //根据页数重新请求渲染即可
@@ -93,8 +79,8 @@ getArticleList()
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSearch">搜索</el-button>
-        <el-button @click="onReset">重置</el-button>
+        <el-button type="primary">搜索</el-button>
+        <el-button>重置</el-button>
       </el-form-item>
     </el-form>
     <!-- 主体表格 -->

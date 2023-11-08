@@ -30,20 +30,6 @@ const params = ref({
   cate_id: '', //默认文章分类下拉菜单的选择
   state: ''
 })
-//处理搜索按钮
-const onSearch = () => {
-  //注意重置页面
-  params.value.pagenum = 1
-  getArticleList()
-}
-//处理重置按钮
-const onReset = () => {
-  //注意重置页面
-  params.value.pagenum = 1
-  params.value.cate_id = ''
-  params.value.state = ''
-  getArticleList()
-}
 
 //处理每页条数改变
 const handleSizeChange = (size) => {
