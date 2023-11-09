@@ -1,0 +1,28 @@
+<script setup>
+import PageContainer from '@/components/PageContainer.vue'
+import { useUserStore } from '@/stores/index'
+import { ref } from 'vue'
+
+const userStore = useUserStore()
+// console.log(userStore.userInfo)
+const { id, username, nickname, email } = userStore.userInfo
+</script>
+
+<template>
+  <PageContainer title="基本资料">
+    <el-form>
+      <el-form-item label="登录名称">
+        <el-input disabled :placeholder="username"></el-input>
+      </el-form-item>
+      <el-form-item label="用户昵称">
+        <el-input></el-input>
+      </el-form-item>
+      <el-form-item label="用户邮箱">
+        <el-input></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">提交修改</el-button>
+      </el-form-item>
+    </el-form>
+  </PageContainer>
+</template>

@@ -8,5 +8,4 @@ export const userLoginService = ({ username, password }) =>
 
 export const userUserInfoService = () => request.get('/my/userinfo')
 
-export const userUpdateService = ({ id, nickname, email }) =>
-  request.put('/my/userinfo', { id, nickname, email })
+export const userUpdateService = (data) => request.put('/my/userinfo', data)

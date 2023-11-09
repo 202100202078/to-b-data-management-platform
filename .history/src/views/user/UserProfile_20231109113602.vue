@@ -3,7 +3,6 @@ import PageContainer from '@/components/PageContainer.vue'
 import { useUserStore } from '@/stores/index'
 import { userUpdateService } from '@/api/user.js'
 import { ref } from 'vue'
-import { ElMessage } from 'element-plus'
 
 const userStore = useUserStore()
 // console.log(userStore.userInfo)
@@ -25,26 +24,14 @@ const rules = {
   ]
 }
 
-const formRef = ref()
-
 const onSubmit = async () => {
-  //表单校验
-  formRef.value.validate()
-  await userUpdateService(userInfo.value)
-  ElMessage.success('修改成功')
-  userStore.getUserInfo()
+  await userUpdateService()
 }
 </script>
 
 <template>
   <PageContainer title="基本资料">
-    <el-form
-      :model="userInfo"
-      :rules="rules"
-      label-width="100px"
-      size="large"
-      ref="formRef"
-    >
+    <el-form :model="userInfo" :rules="rules" label-width="100px" size="large">
       <el-form-item label="登录名称">
         <el-input disabled :placeholder="username"></el-input>
       </el-form-item>

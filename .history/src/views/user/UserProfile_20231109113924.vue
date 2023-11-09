@@ -32,7 +32,7 @@ const onSubmit = async () => {
   formRef.value.validate()
   await userUpdateService(userInfo.value)
   ElMessage.success('修改成功')
-  userStore.getUserInfo()
+  userStore.
 }
 </script>
 

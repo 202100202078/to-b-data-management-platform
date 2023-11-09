@@ -1,9 +1,7 @@
 <script setup>
 import PageContainer from '@/components/PageContainer.vue'
 import { useUserStore } from '@/stores/index'
-import { userUpdateService } from '@/api/user.js'
 import { ref } from 'vue'
-import { ElMessage } from 'element-plus'
 
 const userStore = useUserStore()
 // console.log(userStore.userInfo)
@@ -19,43 +17,26 @@ const rules = {
       trigger: 'blur'
     }
   ],
-  email: [
-    { required: true, message: '请输入用户邮箱', trigger: 'blur' },
-    { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }
+  email:[
+    {}
   ]
-}
-
-const formRef = ref()
-
-const onSubmit = async () => {
-  //表单校验
-  formRef.value.validate()
-  await userUpdateService(userInfo.value)
-  ElMessage.success('修改成功')
-  userStore.getUserInfo()
 }
 </script>
 
 <template>
   <PageContainer title="基本资料">
-    <el-form
-      :model="userInfo"
-      :rules="rules"
-      label-width="100px"
-      size="large"
-      ref="formRef"
-    >
+    <el-form :model="userInfo" :rules="rules" label-width="100px" size="large">
       <el-form-item label="登录名称">
         <el-input disabled :placeholder="username"></el-input>
       </el-form-item>
-      <el-form-item label="用户昵称" prop="nickname">
+      <el-form-item label="用户昵称">
         <el-input v-model="userInfo.nickname"></el-input>
       </el-form-item>
-      <el-form-item label="用户邮箱" prop="email">
+      <el-form-item label="用户邮箱">
         <el-input v-model="userInfo.email"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">提交修改</el-button>
+        <el-button type="primary">提交修改</el-button>
       </el-form-item>
     </el-form>
   </PageContainer>
