@@ -30,7 +30,7 @@ const rules = {
       trigger: 'blur'
     }
   ],
-  re_pwd: [
+  repassword: [
     { required: true, message: '请再次输入新密码', trigger: 'blur' },
     {
       validator: (rule, value, callback) => {
@@ -72,7 +72,7 @@ const resetPassword = () => {
       <el-form-item label="新密码" prop="new_pwd">
         <el-input v-model="formModel.new_pwd" type="password"></el-input>
       </el-form-item>
-      <el-form-item label="确认新密码" prop="re_pwd">
+      <el-form-item label="确认新密码" prop="repassword">
         <el-input v-model="formModel.re_pwd" type="password"></el-input>
       </el-form-item>
       <el-form-item>

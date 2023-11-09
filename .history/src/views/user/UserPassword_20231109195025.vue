@@ -1,8 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import { userUpdatePasswordService } from '@/api/user.js'
-import { useUserStore } from '@/stores/index'
-import { useRouter } from 'vue-router'
 const formRef = ref()
 
 const formModel = ref({
@@ -12,17 +10,17 @@ const formModel = ref({
 })
 
 const rules = {
-  old_pwd: [
+  oldpassword: [
     { required: true, message: '请输入旧密码', trigger: 'blur' },
     { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' }
   ],
-  new_pwd: [
+  newpassword: [
     { required: true, message: '请输入新密码', trigger: 'blur' },
-    { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' },
+    { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' }，
     {
       validator: (rule, value, callback) => {
-        if (value === formModel.value.old_pwd) {
-          callback(new Error('新密码不能与原密码一样'))
+        if (value != formModel.value.newpassword) {
+          callback(new Error('两次密码不一致'))
         } else {
           callback()
         }
@@ -30,11 +28,11 @@ const rules = {
       trigger: 'blur'
     }
   ],
-  re_pwd: [
+  repassword: [
     { required: true, message: '请再次输入新密码', trigger: 'blur' },
     {
       validator: (rule, value, callback) => {
-        if (value != formModel.value.new_pwd) {
+        if (value != formModel.value.newpassword) {
           callback(new Error('两次密码不一致'))
         } else {
           callback()
@@ -45,17 +43,13 @@ const rules = {
   ]
 }
 
-const router = useRouter()
-const userStore = useUserStore()
 const updatePassword = async () => {
   //校验表单
   await formRef.value.validate()
   await userUpdatePasswordService(formModel.value)
   ElMessage.success('修改成功')
-  //清空本地个人信息并退出登录
-  userStore.removeToken()
-  userStore.setUserInfo({})
-  router.push('/login')
+  //清空表单
+  formRef.value.resetFields()
 }
 
 const resetPassword = () => {
@@ -64,16 +58,16 @@ const resetPassword = () => {
 </script>
 
 <template>
-  <PageContainer title="修改密码">
+  <PageContainer title="重置密码">
     <el-form :model="formModel" :rules="rules" size="large" ref="formRef">
-      <el-form-item label="原密码" prop="old_pwd">
-        <el-input v-model="formModel.old_pwd" type="password"></el-input>
+      <el-form-item label="原密码" prop="oldpassword">
+        <el-input v-model="formModel.oldpassword" type="password"></el-input>
       </el-form-item>
-      <el-form-item label="新密码" prop="new_pwd">
-        <el-input v-model="formModel.new_pwd" type="password"></el-input>
+      <el-form-item label="新密码" prop="newpassword">
+        <el-input v-model="formModel.newpassword" type="password"></el-input>
       </el-form-item>
-      <el-form-item label="确认新密码" prop="re_pwd">
-        <el-input v-model="formModel.re_pwd" type="password"></el-input>
+      <el-form-item label="确认新密码" prop="repassword">
+        <el-input v-model="formModel.repassword" type="password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="updatePassword">修改密码</el-button>

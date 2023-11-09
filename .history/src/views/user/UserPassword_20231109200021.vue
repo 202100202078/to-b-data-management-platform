@@ -16,7 +16,7 @@ const rules = {
     { required: true, message: '请输入旧密码', trigger: 'blur' },
     { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' }
   ],
-  new_pwd: [
+  newpassword: [
     { required: true, message: '请输入新密码', trigger: 'blur' },
     { pattern: /^\S{6,15}$/, message: '密码必须是6-15位的非空字符' },
     {
@@ -30,11 +30,11 @@ const rules = {
       trigger: 'blur'
     }
   ],
-  re_pwd: [
+  repassword: [
     { required: true, message: '请再次输入新密码', trigger: 'blur' },
     {
       validator: (rule, value, callback) => {
-        if (value != formModel.value.new_pwd) {
+        if (value != formModel.value.newpassword) {
           callback(new Error('两次密码不一致'))
         } else {
           callback()
@@ -69,10 +69,10 @@ const resetPassword = () => {
       <el-form-item label="原密码" prop="old_pwd">
         <el-input v-model="formModel.old_pwd" type="password"></el-input>
       </el-form-item>
-      <el-form-item label="新密码" prop="new_pwd">
+      <el-form-item label="新密码" prop="newpassword">
         <el-input v-model="formModel.new_pwd" type="password"></el-input>
       </el-form-item>
-      <el-form-item label="确认新密码" prop="re_pwd">
+      <el-form-item label="确认新密码" prop="repassword">
         <el-input v-model="formModel.re_pwd" type="password"></el-input>
       </el-form-item>
       <el-form-item>
