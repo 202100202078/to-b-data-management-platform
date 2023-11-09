@@ -2,8 +2,6 @@
 import { useUserStore } from '@/stores/index'
 import { ref } from 'vue'
 import { Plus, Upload } from '@element-plus/icons-vue'
-import { userUploadAvatorService } from '@/api/user'
-import { ElMessage } from 'element-plus'
 const userStore = useUserStore()
 const imgUrl = ref(userStore.userInfo.user_pic)
 
@@ -14,12 +12,6 @@ const onUploadFile = (file) => {
   reader.onload = () => {
     imgUrl.value = reader.result
   }
-}
-
-const uploadAvator = async () => {
-  await userUploadAvatorService(imgUrl.value)
-  await userStore.getUserInfo()
-  ElMessage.success('上传成功')
 }
 </script>
 
@@ -43,9 +35,7 @@ const uploadAvator = async () => {
       @click="uploadRef.$el.querySelector('input').click()"
       >选择头像</el-button
     >
-    <el-button type="success" :icon="Upload" @click="uploadAvator"
-      >上传头像</el-button
-    >
+    <el-button type="success" :icon="Upload">上传头像</el-button>
   </PageContainer>
 </template>
 

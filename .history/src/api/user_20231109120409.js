@@ -11,7 +11,6 @@ export const userUserInfoService = () => request.get('/my/userinfo')
 export const userUpdateService = ({ id, nickname, email }) =>
   request.put('/my/userinfo', { id, nickname, email })
 
-export const userUploadAvatorService = (avatar) =>
-  request.patch('/my/update/avatar', {
-    avatar
-  })
+export const userUploadAvatorService = (avator) => request.patch('/my/update/avatar',{
+  
+})
